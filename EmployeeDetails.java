@@ -1,4 +1,6 @@
 import com.ideas2it.employeemanagement.view.EmployeeView;
+import com.ideas2it.employeemanagement.view.ProjectView;
+import java.util.Scanner;
 
 /**
  * Initiate the controller.
@@ -10,7 +12,18 @@ public class EmployeeDetails {
 
     public static void main(String[] args) {
 
-	EmployeeView view = new EmployeeView();
-        view.showMenu();	
+        EmployeeView employeeView = new EmployeeView();
+        ProjectView projectView = new ProjectView();
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("\n1.Employee \n2.Project \nEnter the option: ");
+        switch(input.nextInt()){
+            case 1:
+                employeeView.showMenu();
+                break;
+            case 2:
+                projectView.showMenu();
+                break;	
+        }
     }
 }

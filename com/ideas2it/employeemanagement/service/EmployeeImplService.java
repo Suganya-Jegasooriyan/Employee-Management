@@ -16,48 +16,48 @@ import com.ideas2it.employeemanagement.dao.impl.EmployeeDao;
 
 public interface EmployeeImplService {
 
-	public boolean isValidOption(String option);
+    public boolean isValidOption(String option);
 
-	public boolean validateId(int id);
+    public boolean validateId(int id);
 
-	public boolean validateFirstName(String firstName);
+    public boolean validateFirstName(String firstName);
 
-	public boolean validateLastName(String lastName);
+    public boolean validateLastName(String lastName);
 
-	public boolean validateSalary(String salary);
+    public boolean validateSalary(String salary);
 
-	public boolean validateMobileNumber(String mobileNumber);
+    public boolean validateMobileNumber(String mobileNumber);
 
-	public boolean validateMailId(String mailId);
+    public boolean validateMailId(String mailId);
 
-	public boolean validateDateOfBirth(String date);
+    public boolean validateDateOfBirth(String date);
 
-	public int age(LocalDate dateOfBirth);
+    public int age(LocalDate dateOfBirth);
 
-	public Employee viewParticularEmployee(int id);
+    public Employee viewParticularEmployee(int id);
 
-	public List viewAllEmployee();
+    public List viewAllEmployee();
 
-	public void updateFirstName(int id, String firstName);
+    public void updateFirstName(int id, String firstName);
 
-	public void updateLastName(int id, String lastName);
+    public void updateLastName(int id, String lastName);
 
-	public void updateMobileNumber(int id, String mobileNumber);
+    public void updateMobileNumber(int id, String mobileNumber);
 
-	public void updateSalary(int id, String salary);
+    public void updateSalary(int id, String salary);
 
-	public void updateMailId(int id, String mailId);
+    public void updateMailId(int id, String mailId);
 
-	public void updateDateOfBirth(int id, LocalDate dateOfBirth);
+    public void updateDateOfBirth(int id, LocalDate dateOfBirth);
   
-    public void deleteParticularEmployee(int id); 
+    public void deleteParticularEmployee(int id);
 
     public boolean validateAddressType(String addressType);
 
     public boolean validateFirstLine(String firstLine);
-		
+        
     public boolean validateSecondLine(String secondLine);
-		
+        
     public boolean validateCity(String city);
 
     public boolean validateDistrict(String district);
@@ -66,17 +66,13 @@ public interface EmployeeImplService {
 
     public boolean validatePinCode(String pinCode); 
 
-    public void updateCurrentAddress(int id, String addressType,
-            String firstLine, String secondLine, String city, 
-            String district, String state, String pinCode);
+    public void updateCurrentAddress(List<Address> addressDetails, int id);
 
-    public void updatePermanentAddress(int id, String addressType, 
-            String firstLine, String secondLine, String city, 
-            String district, String state, String pinCode);
+    public void updatePermanentAddress(List<Address> addressDetails, int id);
 
     public void deleteCurrentAddress(int id, String addressType);
 
     public void deletePermanentAddress(int id, String addressType);
 
-    public int setEmployee(Employee employee);
+    public void setEmployee(Employee employee);
 }

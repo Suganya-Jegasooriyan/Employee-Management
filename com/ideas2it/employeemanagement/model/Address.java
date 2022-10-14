@@ -8,6 +8,7 @@ package com.ideas2it.employeemanagement.model;
  */
 public class Address {
     
+    private int addressId;
     private String firstLine;
     private String secondLine;
     private String city;
@@ -16,6 +17,16 @@ public class Address {
     private String pinCode;
     private String addressType;
  
+    public void setAddressId(int addressId) {
+
+        this.addressId = addressId;
+    } 
+    
+    public int getAddressId() {
+
+        return addressId;
+    }
+
     public void setFirstLine(String firstLine) {
 
         this.firstLine = firstLine;

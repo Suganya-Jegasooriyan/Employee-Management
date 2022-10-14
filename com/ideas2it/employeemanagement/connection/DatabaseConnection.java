@@ -1,41 +1,28 @@
 package com.ideas2it.employeemanagement.connection;
 
-import java.sql.Connection;
-import java.sql.DriverManager; 
-import java.sql.SQLException;
+import org.hibernate.HibernateException; 
+import org.hibernate.Session; 
+import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 public class DatabaseConnection {
      
-    private static Connection connection = null;
+    private static SessionFactory sessionFactory;
 
     private DatabaseConnection(){
-
+        try{
+        Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+        sessionFactory = configuration.buildSessionFactory();
+        } catch (HibernateException hibernateException){
+            hibernateException.printStackTrace();
+        }
     }
      
-	public static Connection getConnection() {
-
-        try{
-            if(connection == null || connection.isClosed()){
-		        Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://"
-                        + "localhost:3306/employee_management_application",
-                        "root","suganyai2i");
-            }
-        } catch (Exception e) {
-        	System.out.println("Exception occured");
-        }
-        return connection;
+	public static Session getConnection() {
+        Session session;
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        session = sessionFactory.openSession();
+        return session;
 	}
-    
-    public static Connection closeConnection() {
-
-        try {
-            if (connection != null ) {
-                connection.close();
-            }
-        } catch (SQLException exception) {
-            exception.printStackTrace();
-        }
-        return connection;
-    }
 }

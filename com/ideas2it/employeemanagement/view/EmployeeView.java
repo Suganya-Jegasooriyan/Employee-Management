@@ -29,38 +29,38 @@ public class EmployeeView {
         System.out.println("\n ........Welcome to Employee Management "
                 + "Application........\nMain Menu:");
         
-	    do {
+        do {
             System.out.println("\n1.create \n2.update \n3.delete \n4.view "
                     + "\n5.exit"); 
             switch (isValidOption()) {
                 case "1":
                     System.out.println("...Create...");
                     create();
-	                break;
-			
-	            case "2":
-	                System.out.println("...Update...");
+                    break;
+            
+                case "2":
+                    System.out.println("...Update...");
                     update();
-	                break;
-				
-	            case "3":
-	                System.out.println("...Delete...");
+                    break;
+                
+                case "3":
+                    System.out.println("...Delete...");
                     delete();
-	                break;
+                    break;
                 
                 case "4":
-	                System.out.println("...View...");
+                    System.out.println("...View...");
                     view();
-	                break;
+                    break;
 
-		        case "5":
-	                System.out.println("Exit \n\5Thank You\5");
+                case "5":
+                    System.out.println("Exit \n\5Thank You\5");
                     isValid = true;
                     break;
 
-	            default: System.out.println("\nPlease enter the correct option\n");
-	        }
-	    } while (!isValid);
+                default: System.out.println("\nPlease enter the correct option\n");
+            }
+        } while (!isValid);
     }
 
     /**
@@ -79,7 +79,7 @@ public class EmployeeView {
             if (controller.isValidOption(option)) {
                 isValid = true;
             } else {
-                System.out.println("\nPlease Enter the correct option1111\n");
+                System.out.println("\nPlease Enter the correct option\n");
                 isValid = false;
             }
         } while(!isValid);
@@ -94,8 +94,8 @@ public class EmployeeView {
 
         boolean isExits = false;
         boolean isValid = false;
-        int id = 0;
-	    String option;
+        int id= 0;
+        String option;
 
         do {
             Employee employee = new Employee();
@@ -105,8 +105,10 @@ public class EmployeeView {
             employee.setMailId(getAndValidateMailId());
             employee.setMobileNumber(getAndValidateMobileNumber());
             employee.setDateOfBirth(getAndValidateDateOfBirth());     
-            employee.setAddress(employeeAddress());
-            id = controller.setEmployee(employee);
+            employee.setAddressDetails(employeeAddress());
+            controller.setEmployee(employee);
+            id = employee.getId();
+
             System.out.println("\nGenerated ID: " + id + "\nCreated successfully\n");
             do {
                 System.out.println("\n Do You want to Continue to add employee"
@@ -121,7 +123,7 @@ public class EmployeeView {
                         isValid = true;
                         isExits = true;  
                         break; 
-      	
+        
                     default:System.out.println("\nPlease Enter the correct option");          
                 }
             } while (!isValid); 
@@ -157,12 +159,11 @@ public class EmployeeView {
                     
                 case "2":
                     isValid = true;
-                    break;
-                    
+                    break;    
         
                 default:System.out.println("\nPlease Enter the correct option");          
             }
-        } while(!isValid);
+        } while (!isValid);
         return addDetails;
     }
     
@@ -336,7 +337,7 @@ public class EmployeeView {
         int id;
         String option;
 
-	    do {
+        do {
             System.out.println("\n 1.View particular employee \n 2.View all "
                     +"employee \n 3.Back");
             switch (isValidOption()) {
@@ -372,13 +373,13 @@ public class EmployeeView {
 
         do {
             id = getAndValidateId();
-            if (controller.viewParticularEmployee(id) != null) {
+           // if (controller.viewParticularEmployee(id) != null) {
                 System.out.println(controller.viewParticularEmployee(id));
                 isValid = true;
-            } else {
-                System.out.println("Please Enter valid Employee ID ");
-            }                        
-        }while(!isValid);
+           // } else {
+                //System.out.println("Please Enter valid Employee ID ");
+            //}                        
+        }while (!isValid);
     }
 
     /**
@@ -388,8 +389,8 @@ public class EmployeeView {
     public void update() {
 
         boolean isValid = false;
-	    int id;
-	    String option;
+        int id;
+        String option;
 
         do {
             System.out.println("\n1.Update particular employee details \n2.Update"
@@ -398,7 +399,7 @@ public class EmployeeView {
             switch (isValidOption()) {
                 case "1":
                     id = getAndValidateId();
-                    updateFullDetails(id); 
+                    updateFullDetails(id);
                     break;
 
                 case "2":
@@ -416,7 +417,7 @@ public class EmployeeView {
                     isValid = true;
                     break; 
  
-	            default:System.out.println("\n...Please Enter the correct option...\n");
+                default:System.out.println("\n...Please Enter the correct option...\n");
             }
         } while (!isValid);  
     }
@@ -459,42 +460,42 @@ public class EmployeeView {
                     + "Details \n1.FirstName \n2.LastName \n3.MobileNumber" 
                     + "\n4.Salary \n5.MailId \n6.DateOfBirth \n7.Exit");
             switch (isValidOption()) {               
-	            case "1":
+                case "1":
                     String firstName = getAndValidateFirstName();
                     controller.updateFirstName(id, firstName);
-	                break;
-				
-	            case "2":
+                    break;
+                
+                case "2":
                     String lastName = getAndValidateLastName();
                     controller.updateLastName(id, lastName);
-	                break;
-				
-	            case "3":
+                    break;
+                
+                case "3":
                     String mobileNumber = getAndValidateMobileNumber();
                     controller.updateMobileNumber(id, mobileNumber);
-	                break;
+                    break;
 
-	            case "4":
+                case "4":
                     String salary = getAndValidateSalary();
                     controller.updateSalary(id, salary);
-	                break;
+                    break;
 
                 case "5":
                     String mailId = getAndValidateMailId();
                     controller.updateMailId(id, mailId);
-	                break;
+                    break;
 
                 case "6":
                     LocalDate dateOfBirth = getAndValidateDateOfBirth();
                     controller.updateDateOfBirth(id, dateOfBirth);
-	                break;
+                    break;
 
-	            case "7":
-	                System.out.println("Back to update option ");
+                case "7":
+                    System.out.println("Back to update option ");
                     isValid = true;
-	                break;
+                    break;
 
-	            default: System.out.println("\n...Please Enter the correct option...\n");
+                default: System.out.println("\n...Please Enter the correct option...\n");
             }
             System.out.println("Updated Successfully");
         } while (!isValid); 
@@ -502,50 +503,52 @@ public class EmployeeView {
 
     /**
      * updates the particular employee address
-     *
      */
     public void updateAddress(int id) {
 
-        String firstLine;
-        String secondLine;
-        String city;
-        String district;
-        String state;
-        String pinCode;
         String addressType;
+        List<Address> addressDetails = new ArrayList<>();
+        Address address = new Address();
         System.out.println("\n1.update current address \n2.update permanent "
                + "address");
         switch (isValidOption()) {   
             case "1":
                 System.out.println("Enter the current address");
                 addressType = "current";
-                firstLine = getAndValidateFirstLine();
-                secondLine = getAndValidateSecondLine();
-       	        city = getAndValidateCity();
-	            district = getAndValidateDistrict();
-                pinCode = getAndValidatePinCode();
-	            state = getAndValidateState();
-                controller.updateCurrentAddress(id, addressType, firstLine,
-                        secondLine, city, state, district, pinCode);
+                address.setAddressType(addressType);
+                address.setFirstLine(getAndValidateFirstLine());
+                address.setSecondLine(getAndValidateSecondLine());
+                address.setCity(getAndValidateCity());
+                address.setDistrict(getAndValidateDistrict());
+                address.setState(getAndValidateState());
+                address.setPinCode(getAndValidatePinCode());
+                addressDetails.add(address);
+                controller.updateCurrentAddress(addressDetails,id);
                 break;
       
             case "2":
                 System.out.println("Enter the permanent address");
                 addressType = "permanent";
-                firstLine = getAndValidateFirstLine();
-                secondLine = getAndValidateSecondLine();
-       	        city = getAndValidateCity();
-	            district = getAndValidateDistrict();
-                pinCode = getAndValidatePinCode();
-	            state = getAndValidateState();
-                controller.updatePermanentAddress(id, addressType, firstLine, 
-                        secondLine, city, state, district, pinCode);
+                address.setAddressType(addressType);
+                address.setFirstLine(getAndValidateFirstLine());
+                address.setSecondLine(getAndValidateSecondLine());
+                address.setCity(getAndValidateCity());
+                address.setDistrict(getAndValidateDistrict());
+                address.setState(getAndValidateState());
+                address.setPinCode(getAndValidatePinCode());
+                addressDetails.add(address);
+                controller.updatePermanentAddress(addressDetails,id);
                 break;
 
             default:System.out.println("Please Enter the correct option");           
         }
     }
 
+    /**
+     * Gets the addresstype of address from user and pass it to 
+     * controller for validation
+     * @return addresstype. 
+     */
     public String getAndValidateAddressType() {
 
         boolean isValid = false;
@@ -569,20 +572,20 @@ public class EmployeeView {
      * @return firstLine. 
      */
     public String getAndValidateFirstLine() {
-		
-	    boolean isValid = false;
-	    String firstLine;
-		
-	    do {
-	        System.out.print("Enter the Address First Line: ");
-	        firstLine = input.nextLine();
+        
+        boolean isValid = false;
+        String firstLine;
+        
+        do {
+            System.out.print("Enter the Address First Line: ");
+            firstLine = input.nextLine();
             if (controller.validateFirstLine(firstLine)) {
                 isValid = true;
             } else {
                 System.out.println("\n...Please Enter valid MailId...\n");
             }
         } while (!isValid);
-	    return firstLine;
+        return firstLine;
     }
 
     /**
@@ -591,83 +594,83 @@ public class EmployeeView {
      * @return secondLine. 
      */
     public String getAndValidateSecondLine() {
-		
-	    boolean isValid = false;
-	    String secondLine;
-		
-	    do {
-	        System.out.print("Enter the Address Second Line: ");
-	        secondLine = input.nextLine();
+        
+        boolean isValid = false;
+        String secondLine;
+        
+        do {
+            System.out.print("Enter the Address Second Line: ");
+            secondLine = input.nextLine();
             if (controller.validateSecondLine(secondLine)) {
                 isValid = true;
             } else {
                 System.out.println("\n...Please Enter valid MailId...\n");
             }
         } while (!isValid);
-	    return secondLine;
-    }	
+        return secondLine;
+    }   
 
     /**
      * Gets the city from user and pass it to controller for validation
      * @return city. 
      */
     public String getAndValidateCity() {
-		
-	    boolean isValid = false;
-	    String city;
-		
-	    do {
-	        System.out.print("Enter the city: ");
-	        city = input.nextLine();
+        
+        boolean isValid = false;
+        String city;
+        
+        do {
+            System.out.print("Enter the city: ");
+            city = input.nextLine();
             if (controller.validateCity(city)) {
                 isValid = true;
             } else {
                 System.out.println("\n...Please Enter valid MailId...\n");
             }
         } while (!isValid);
-	    return city;
-    }	
+        return city;
+    }   
 
     /**
      * Gets the district from user and pass it to controller for validation
      * @return district. 
      */
     public String getAndValidateDistrict() {
-		
-	    boolean isValid = false;
-	    String district;
-		
-	    do {
-	        System.out.print("Enter the district: ");
-	        district = input.nextLine();
+        
+        boolean isValid = false;
+        String district;
+        
+        do {
+            System.out.print("Enter the district: ");
+            district = input.nextLine();
             if (controller.validateDistrict(district)) {
                 isValid = true;
             } else {
                 System.out.println("\n...Please Enter valid MailId...\n");
             }
         } while (!isValid);
-	return district;
-    }	
+    return district;
+    }   
 
     /**
      * Gets the state from user and pass it to controller for validation
      * @return state. 
      */
     public String getAndValidateState() {
-		
-	    boolean isValid = false;
-	    String state;
-		
-	    do {
-	        System.out.print("Enter the state: ");
-	        state = input.nextLine();
+        
+        boolean isValid = false;
+        String state;
+        
+        do {
+            System.out.print("Enter the state: ");
+            state = input.nextLine();
             if (controller.validateState(state)) {
                 isValid = true;
             } else {
                 System.out.println("\n...Please Enter valid MailId...\n");
             }
         } while (!isValid);
-	return state;
+    return state;
     }
 
     /**
@@ -675,13 +678,13 @@ public class EmployeeView {
      * @return pincode. 
      */
     public String getAndValidatePinCode() {
-		
+        
         boolean isValid = false;
         String pinCode;
-		
-	    do {
-	        System.out.print("Enter the pincode: ");
-	        pinCode = input.nextLine();
+        
+        do {
+            System.out.print("Enter the pincode: ");
+            pinCode = input.nextLine();
             if (controller.validatePinCode(pinCode)) {
                 isValid = true;
             } else {
@@ -692,14 +695,15 @@ public class EmployeeView {
     }
 
     /**
-     * Deletes the particular employee records or 
+     * Deletes the particular employee records or current address or
+     * permanent address 
      */
     public void delete() {
 
         boolean isValid = false;
-	    int id;
+        int id;
         String addressType;
-	    String option;
+        String option;
         System.out.println("\n1.Delete particular employee details \n2.Delete " 
                 + "particular employee current address\n3.Delete particular"
                 + "employee permanent address \n4.Back");
@@ -721,7 +725,6 @@ public class EmployeeView {
                     break;
 
                 case "3":
-                    System.out.println("Enter the Id: ");
                     id = getAndValidateId();
                     addressType = getAndValidateAddressType();    
                     controller.deletePermanentAddress(id, addressType);
@@ -735,5 +738,5 @@ public class EmployeeView {
                 default:System.out.println("...Please Enter the correct option..."); 
             }
        } while (!isValid);
-    }	
+    } 
 }

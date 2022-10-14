@@ -7,10 +7,13 @@ import java.util.List;
 /**
  * It presents employee details.
  * 
- * @version	1.0.2
- * @author	suganya J
+ * @version 1.0.2
+ * @author  suganya J
  */
 public class Employee {
+
+    private List<Address> addressDetails;
+    private List<EmployeeProject> projectDetails;
 
     private int age;
     private int id;
@@ -102,23 +105,31 @@ public class Employee {
         return age;
     } 
 
-    public List<Address> addressDetails;
-
-    public void setAddress(List<Address> addressDetails) {
+    public void setAddressDetails(List<Address> addressDetails) {
    
         this.addressDetails = addressDetails;
     }
 
-    public List<Address> getAddress() {
+    public List<Address> getAddressDetails() {
    
         return addressDetails;
+    }
+
+    public void setProjectDetails(List<EmployeeProject> projectDetails) {
+   
+        this.projectDetails = projectDetails;
+    }
+
+    public List<EmployeeProject> getProjectDetails() {
+   
+        return projectDetails;
     }
 
     public String toString() {
 
         return "Employee Id            : "+ id 
-		        + "\nEmployee Name          : " + firstName + "" + lastName 
-		        + "\nEmployee Salary        : " + salary
+                + "\nEmployee Name          : " + firstName + "" + lastName 
+                + "\nEmployee Salary        : " + salary
                 + "\nEmployee Gmail         : " + mailId 
                 + "\nEmployee Mobile Number : " + mobileNumber
                 + "\nEmployee DateOfBirth   : " + dateOfBirth

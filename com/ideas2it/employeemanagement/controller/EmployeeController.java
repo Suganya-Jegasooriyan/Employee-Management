@@ -2,7 +2,6 @@ package com.ideas2it.employeemanagement.controller;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 
 import com.ideas2it.employeemanagement.model.Employee;
 import com.ideas2it.employeemanagement.model.Address;
@@ -168,7 +167,7 @@ public class EmployeeController {
     public void updateDateOfBirth(int id, LocalDate dateOfBirth) {
 
         service.updateDateOfBirth(id, dateOfBirth);
-    } 
+    }
 
     /**
      * Passes the id from view to service for deleting the   
@@ -196,8 +195,8 @@ public class EmployeeController {
      * @return boolean
      */
     public boolean validateFirstLine(String firstLine) {
-		
-	    return service.validateFirstLine(firstLine);
+        
+        return service.validateFirstLine(firstLine);
     }
 
     /**
@@ -206,8 +205,8 @@ public class EmployeeController {
      * @return boolean
      */
     public boolean validateSecondLine(String secondLine) {
-		
-	    return service.validateSecondLine(secondLine);
+        
+        return service.validateSecondLine(secondLine);
     } 
 
     /**
@@ -216,8 +215,8 @@ public class EmployeeController {
      * @return boolean
      */
     public boolean validateCity(String city) {
-		
-	    return service.validateCity(city);
+        
+        return service.validateCity(city);
     }
 
     /**
@@ -226,18 +225,18 @@ public class EmployeeController {
      * @return boolean
      */
     public boolean validateDistrict(String district) {
-		
-	return service.validateDistrict(district);
-    }	
+        
+    return service.validateDistrict(district);
+    }   
 
     /**
      * Passes the state from view to service for validation  
      *
      * @return boolean
-     */	
+     */ 
     public boolean validateState(String state) {
-		
-	    return service.validateState(state);
+        
+        return service.validateState(state);
     }
   
     /*
@@ -246,30 +245,24 @@ public class EmployeeController {
      * @return boolean
      */
     public boolean validatePinCode(String pinCode) {
-		
-	    return service.validatePinCode(pinCode);
+        
+        return service.validatePinCode(pinCode);
     }  
-	
+    
     /**
      * Passes the variables from view to service for update current address  
      */
-    public void updateCurrentAddress(int id, String addressType,   
-            String firstLine, String secondLine, String city, 
-            String district, String state, String pinCode) {
+    public void updateCurrentAddress(List<Address> addressDetails, int id) {
     
-        service.updateCurrentAddress(id, addressType, firstLine, secondLine, 
-                city, district, state, pinCode);
+        service.updateCurrentAddress(addressDetails,id);
     }
 
     /**
      * Passes the variables from view to service for update permanent address  
      */
-    public void updatePermanentAddress(int id, String addressType, 
-            String firstLine, String secondLine,String city, 
-            String district, String state, String pinCode) {
+    public void updatePermanentAddress(List<Address> addressDetails, int id) {
     
-        service.updatePermanentAddress(id, addressType, firstLine, secondLine, 
-                city, district, state, pinCode);
+        service.updatePermanentAddress(addressDetails,id);
     }
 
     /**
@@ -291,9 +284,9 @@ public class EmployeeController {
     /**
      * Passes the all employee details from view to service  
      */
-    public int setEmployee(Employee employee) {
+    public void setEmployee(Employee employee) {
 
-        return service.setEmployee(employee);
+         service.setEmployee(employee);
     }
 
     /**
